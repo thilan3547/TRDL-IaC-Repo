@@ -32,6 +32,10 @@ Below log types are enable at the EKS cluster with a CloudWatch log retension pe
 - controllerManager
 - scheduler
 
+## TRDL app
+
+Please refer https://github.com/thilan3547/sinch-app for the TRDL app. A GitActions workflow is in place to build the docker image and update to a private ECR repo.
+
 ### Prerequisites
 
 Below components are required to run the project locally,
