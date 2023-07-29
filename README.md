@@ -46,8 +46,8 @@ Terraform installed
 
 ### Terraform Plan and Apply
 
-- terraform plan -var "github_org=<git user>" -var "<git token>"
-- terraform apply -var "github_org=<git user>" -var "<git token>"
+- terraform plan -var "github_org=github-user-name" -var "github-token"
+- terraform apply -var "github_org=github-user-name" -var "github-token"
 
 ### Install the TRDL app components
 
