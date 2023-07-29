@@ -52,7 +52,7 @@ module "eks" {
   }
 }
 
-#Cluster addons
+#Cluster aws load balancer addon
 module "eks_blueprints_addons" {
   source = "aws-ia/eks-blueprints-addons/aws"
   version = "~> 1.2" #ensure to update this to the latest/desired version
@@ -66,7 +66,7 @@ module "eks_blueprints_addons" {
 }
 
 
-#GIT
+#GIT Repo creation
 resource "github_repository" "main" {
   name       = var.repository_name
   visibility = var.repository_visibility
@@ -97,7 +97,7 @@ resource "flux_bootstrap_git" "this" {
   components_extra = ["image-reflector-controller","image-automation-controller"]
 }
 
-#IAM role for ECR scaning - service account image-reflector-controller
+#IAM role for ECR scaning
 resource "aws_iam_role" "eks-scan-ecr" {
   name = "EKS-scan-ECR"
 
