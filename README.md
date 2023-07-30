@@ -46,8 +46,9 @@ Below components are required to run the project locally,
 
 ### Terraform Plan and Apply
 
-- terraform plan -var "github_org=github-user-name" -var "github-token"
-- terraform apply -var "github_org=github-user-name" -var "github-token"
+- terraform init
+- terraform plan -var "github_org=github-user-name" -var "github_token=your-github-token-here"
+- terraform apply -var "github_org=github-user-name" -var "github_token=your-github-token-here"
 
 ### Install the TRDL app components
 
