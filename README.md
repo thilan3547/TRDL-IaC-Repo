@@ -32,6 +32,10 @@ Below log types are enabled at the EKS cluster with a CloudWatch log retention p
 - controllerManager
 - scheduler
 
+## Post Testing
+
+After a new app release, A GitHub actions workflow will be invoked after every push to the main branch which will curl the TRDL endpoint URL and check the response code. If the response code is not 200 the job will fail and trigger an email notification to the relevant teams.
+
 ## TRDL app
 
 Please refer https://github.com/thilan3547/sinch-app for the TRDL app. A GitActions workflow is in place to build the docker image and update it to a private ECR repo.
