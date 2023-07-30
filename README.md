@@ -4,7 +4,7 @@ This repo contains all the Terraform configurations required to create the AWS i
 
 - EKS cluster
 - GitHub repo
-Bootstrapping of EKS cluster with Flux (to support CI/CD functions of the TRDL app)
+- Bootstrapping of EKS cluster with Flux (to support CI/CD functions of the TRDL app)
 - IAM role (which will use by an EKS service-account to scan a private ECR repo)
 
 ## Architecture Diagram
