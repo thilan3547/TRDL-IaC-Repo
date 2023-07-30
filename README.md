@@ -9,7 +9,7 @@ Bootstrapping of EKS cluster with Flux (to support CI/CD functions of the TRDL a
 
 ## Architecture Diagram
 
-image.png
+![Screenshot](screenshot.png)
 
 ## High Availability
 
@@ -42,7 +42,7 @@ Below components are required to run the project locally,
 - GitHub account
 - GitHub token
 - AWS account and ECR private repo
-Terraform installed
+- Terraform
 
 ### Terraform Plan and Apply
 
@@ -53,7 +53,7 @@ Terraform installed
 
 After completing the Terraform installation, add all the yaml files inside https://github.com/thilan3547/fluxcd-demo-3 -> clusters -> my-cluster -> demo to the new GitHub repository created by Terraform.
 
-Update ecrpolicy.yaml, ecrscan.yaml, imageupdateautomation.yaml and sinchpods.yaml files with the ECR url and docker tag pattern.
+Update ecrpolicy.yaml, ecrscan.yaml, imageupdateautomation.yaml and sinchpods.yaml files with your ECR url and docker tag pattern.
 
 ## Future Improvements
 
