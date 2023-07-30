@@ -52,7 +52,9 @@ Below components are required to run the project locally,
 
 ### Install the TRDL app components
 
-After completing the Terraform installation, add all the yaml files inside https://github.com/thilan3547/fluxcd-demo-3 -> clusters -> my-cluster -> demo to the new GitHub repository created by Terraform (location will be clusters/my-cluster/(new-folder)).
+After completing the Terraform installation, 
+- Clone the new Git repo created by Terraform
+- Add all the yaml files inside https://github.com/thilan3547/fluxcd-demo-3 -> clusters -> my-cluster -> demo to the new GitHub repository (location will be clusters/my-cluster/(new-folder-name)).
 
 Update ecrpolicy.yaml, ecrscan.yaml, imageupdateautomation.yaml and sinchpods.yaml files with your ECR url and docker tag pattern.
 
