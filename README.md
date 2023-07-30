@@ -58,5 +58,9 @@ Update ecrpolicy.yaml, ecrscan.yaml, imageupdateautomation.yaml and sinchpods.ya
 ## Future Improvements
 
 - Migrate the Terraform state from local to S3 with DynamoDB checksum
-Use a user-friendly FQDN as the customer accessing URL
+- Use a user-friendly FQDN as the customer accessing URL
 - Use HTTPS endpoint with an ACM certificate
+
+### Authors
+
+Romesh Samarakoon
