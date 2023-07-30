@@ -42,6 +42,7 @@ Below components are required to run the project locally,
 - GitHub account
 - GitHub token with 'repo' permission enabled 
 - AWS account and ECR private repo
+- Application containerized and uploaded to the ECR private repo
 - Terraform
 
 ### Terraform Plan and Apply
@@ -55,7 +56,7 @@ Below components are required to run the project locally,
 After completing the Terraform installation, 
 - Clone the new Git repo created by Terraform
 - Add all the yaml files inside https://github.com/thilan3547/fluxcd-demo-3 -> clusters -> my-cluster -> demo to the new GitHub repository (location will be clusters/my-cluster/(new-folder-name)).
-- Update ecrpolicy.yaml, ecrscan.yaml, imageupdateautomation.yaml and sinchpods.yaml files with your ECR URL and docker tag pattern.
+- Update ecrpolicy.yaml, ecrscan.yaml, imageupdateautomation.yaml and sinchpods.yaml files with your ECR image URL and docker tag pattern.
 
 ## Future Improvements
 
