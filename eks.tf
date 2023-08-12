@@ -126,3 +126,57 @@ resource "aws_iam_policy_attachment" "ecr_readonly_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   roles       = [aws_iam_role.eks-scan-ecr.name]
 }
+
+#IAM role for ClusterAutoscaler
+resource "aws_iam_role" "AmazonEKSClusterAutoscalerRole" {
+  name = "AmazonEKSClusterAutoscalerRole"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Federated = "arn:aws:iam::746247950449:oidc-provider/oidc.eks.eu-north-1.amazonaws.com/id/${trimprefix(module.eks.cluster_oidc_issuer_url, "https://oidc.eks.eu-north-1.amazonaws.com/id/")}"
+        }
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Condition = {
+            "StringEquals" = {
+                "oidc.eks.eu-north-1.amazonaws.com/id/${trimprefix(module.eks.cluster_oidc_issuer_url, "https://oidc.eks.eu-north-1.amazonaws.com/id/")}:sub": "system:serviceaccount:kube-system:cluster-autoscaler"
+                "oidc.eks.eu-north-1.amazonaws.com/id/${trimprefix(module.eks.cluster_oidc_issuer_url, "https://oidc.eks.eu-north-1.amazonaws.com/id/")}:aud": "sts.amazonaws.com"
+            }
+        }
+      }
+    ]
+  })
+}
+
+#IAM policy for ClusterAutoscaler
+
+resource "aws_iam_policy" "AmazonEKSClusterAutoscalerPolicy" {
+  name        = "AmazonEKSClusterAutoscalerPolicy"
+  
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeAutoScalingInstances",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeTags",
+                "autoscaling:SetDesiredCapacity",
+                "autoscaling:TerminateInstanceInAutoScalingGroup",
+                "ec2:DescribeLaunchTemplateVersions"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "AmazonEKSClusterAutoscaler" {
+  role       = aws_iam_role.AmazonEKSClusterAutoscalerRole.name
+  policy_arn = aws_iam_policy.AmazonEKSClusterAutoscalerPolicy.arn
+}
